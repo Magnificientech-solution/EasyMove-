@@ -23,9 +23,9 @@ const PAYMENT_PROVIDERS = {
       secret_key: 'STRIPE_SECRET_KEY',      // Environment variable name
     },
     endpoints: {
-      create_payment_intent: '/api/create-payment-intent',
-      create_checkout_session: '/api/create-checkout-session',
-      webhook: '/api/webhooks/stripe',
+      create_payment_intent: `${import.meta.env.VITE_BASE_URL}/api/create-payment-intent`,
+      create_checkout_session: `${import.meta.env.VITE_BASE_URL}/api/create-checkout-session`,
+      webhook: `${import.meta.env.VITE_BASE_URL}/api/webhooks/stripe`,
     },
     // Fallback test keys (only for development)
     test_keys: {
@@ -48,9 +48,9 @@ const PAYMENT_PROVIDERS = {
       client_secret: 'PAYPAL_CLIENT_SECRET', // Environment variable name
     },
     endpoints: {
-      setup: '/api/paypal/setup',
-      create_order: '/api/paypal/order',
-      capture_order: '/api/paypal/order/:orderID/capture',
+      setup: `${import.meta.env.VITE_BASE_URL}/api/paypal/setup`,
+      create_order: `${import.meta.env.VITE_BASE_URL}/api/paypal/order`,
+      capture_order: `${import.meta.env.VITE_BASE_URL}/api/paypal/order/:orderID/capture`,
     },
     // Known errors and troubleshooting steps
     common_errors: {

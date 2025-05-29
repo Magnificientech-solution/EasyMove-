@@ -24,7 +24,7 @@ export const LoadStripe = (): Promise<Stripe | null> => {
     // Handle swapped keys - if the "public" key starts with sk_, it's actually the secret key
     if (key.startsWith('sk_')) {
       console.warn('Detected incorrect Stripe public key format (starts with sk_)');
-      // We can't access process.env.STRIPE_SECRET_KEY from client, so we need a workaround
+      // We can't access process.env.VITE_STRIPE_SECRET_KEY from client, so we need a workaround
       // Fall back to a demo key
       console.error('Unable to use Stripe public key starting with sk_ - using demo mode');
       key = process.env.STRIPE_PUBLIC_KEY;

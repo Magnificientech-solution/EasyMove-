@@ -1,4 +1,4 @@
-import DriverRegistrationForm from "@/components/driver/DriverRegistration";
+import DriverRegistrationForm from "../components/driver/DriverRegistration";
 
 export default function DriverRegistration() {
   return (

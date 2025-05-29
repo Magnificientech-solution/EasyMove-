@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import DetailedItemsForm, { Item } from '@/components/quote/DetailedItemsForm';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { useToast } from '@/hooks/use-toast';
-import { apiRequest } from '@/lib/queryClient';
-import { calculateDetailedQuote, type QuoteResult } from '@/lib/utils/quote-calculator';
+import DetailedItemsForm, { Item } from '../../components/quote/DetailedItemsForm';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
+import { useToast } from '../../hooks/use-toast';
+import { apiRequest } from '../../lib/queryClient';
+import { calculateDetailedQuote, type QuoteResult } from '../../lib/utils/quote-calculator';
 import { VanSize, FloorAccess, UrgencyLevel } from '@shared/pricing-rules';
-import { formatPrice } from '@/lib/utils';
+import { formatPrice } from '../../lib/utils';
 
 interface DetailedQuoteFormProps {
   initialPickupAddress?: string;
@@ -75,7 +75,7 @@ export default function DetailedQuoteForm({
       // Call API for distance calculation first
       const distanceResponse = await apiRequest({
         method: 'POST',
-        url: '/api/quotes/distance',
+        url: `${import.meta.env.VITE_BASE_URL}/api/quotes/distance`,
         data: {
           from: initialPickupAddress,
           to: initialDeliveryAddress
@@ -85,7 +85,7 @@ export default function DetailedQuoteForm({
       // Then generate the detailed quote with all parameters
       const quoteResponse = await apiRequest({
         method: 'POST',
-        url: '/api/quotes/calculate',
+        url: `${import.meta.env.VITE_BASE_URL}/api/quotes/calculate`,
         data: {
           collectionAddress: initialPickupAddress,
           deliveryAddress: initialDeliveryAddress,

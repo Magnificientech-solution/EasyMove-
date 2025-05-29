@@ -1,5 +1,5 @@
 import { MapPin, Search, Globe, CheckCircle2 } from "lucide-react";
-import { MediumVanIcon } from "@/assets/van-icons";
+import { MediumVanIcon } from "../../assets/van-icons";
 import vanmanVideo from "../../assets/vanman_mp4.mp4";
 
 // Focused regions based on business priorities

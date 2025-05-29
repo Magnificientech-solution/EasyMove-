@@ -4,6 +4,7 @@ import * as schema from "@shared/schema";
 import { initializeDefaultPricingModel } from "./pricing-init";
 import { sql } from "drizzle-orm";
 
+
 /**
  * Initializes the database and runs necessary setup
  */

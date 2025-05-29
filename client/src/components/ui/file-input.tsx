@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../components/ui/button";
 
 interface FileInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
   text: string;

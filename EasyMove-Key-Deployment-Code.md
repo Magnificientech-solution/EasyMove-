@@ -103,7 +103,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Basic routes
-  app.get("/api/health", (req, res) => {
+  app.get(`${import.meta.env.VITE_BASE_URL}/api/health`, (req, res) => {
     res.json({ status: "ok" });
   });
 

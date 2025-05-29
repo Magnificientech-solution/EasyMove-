@@ -252,7 +252,7 @@ export default function PayPalButton({
       currency: currency,
       intent: intent,
     };
-    const response = await fetch("/api/paypal/order", {
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/paypal/order`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(orderPayload),
@@ -262,7 +262,7 @@ export default function PayPalButton({
   };
 
   const captureOrder = async (orderId: string) => {
-    const response = await fetch(`/api/paypal/order/${orderId}/capture`, {
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/paypal/order/${orderId}/capture`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -292,17 +292,17 @@ The server exposes several API endpoints for the frontend to interact with:
 
 ```typescript
 // Calculate distance between two addresses
-app.post("/api/distance", async (req, res) => {
+app.post(`${import.meta.env.VITE_BASE_URL}/api/distance`, async (req, res) => {
   // Implementation uses either Google Maps API or fallback calculation
 });
 
 // Generate a complete quote
-app.post("/api/quotes/calculate", async (req, res) => {
+app.post(`${import.meta.env.VITE_BASE_URL}/api/quotes/calculate`, async (req, res) => {
   // Full quote calculation with all factors
 });
 
 // Generate a simplified quote (fewer parameters)
-app.post("/api/quotes/simple", async (req, res) => {
+app.post(`${import.meta.env.VITE_BASE_URL}/api/quotes/simple`, async (req, res) => {
   // Simplified quote for quick estimates
 });
 ```
@@ -311,7 +311,7 @@ app.post("/api/quotes/simple", async (req, res) => {
 
 ```typescript
 // Stripe payment intent creation
-app.post("/api/create-payment-intent", async (req, res) => {
+app.post(`${import.meta.env.VITE_BASE_URL}/api/create-payment-intent`, async (req, res) => {
   const { amount } = req.body;
   const paymentIntent = await stripe.paymentIntents.create({
     amount: Math.round(amount * 100), // Convert to cents
@@ -321,22 +321,22 @@ app.post("/api/create-payment-intent", async (req, res) => {
 });
 
 // PayPal setup endpoint
-app.get("/api/paypal/setup", async (req, res) => {
+app.get(`${import.meta.env.VITE_BASE_URL}/api/paypal/setup`, async (req, res) => {
   await loadPaypalDefault(req, res);
 });
 
 // PayPal order creation
-app.post("/api/paypal/order", async (req, res) => {
+app.post(`${import.meta.env.VITE_BASE_URL}/api/paypal/order`, async (req, res) => {
   await createPaypalOrder(req, res);
 });
 
 // PayPal order capture
-app.post("/api/paypal/order/:orderID/capture", async (req, res) => {
+app.post(`${import.meta.env.VITE_BASE_URL}/api/paypal/order/:orderID/capture`, async (req, res) => {
   await capturePaypalOrder(req, res);
 });
 
 // PayPal token warm-up for faster processing
-app.get("/api/paypal/warmup", async (req, res) => {
+app.get(`${import.meta.env.VITE_BASE_URL}/api/paypal/warmup`, async (req, res) => {
   const startTime = performance.now();
   // Preload PayPal token for faster checkout
   await warmupPayPalToken();
@@ -353,17 +353,17 @@ app.get("/api/paypal/warmup", async (req, res) => {
 
 ```typescript
 // User registration
-app.post("/api/users/register", async (req, res) => {
+app.post(`${import.meta.env.VITE_BASE_URL}/api/users/register`, async (req, res) => {
   // User creation logic
 });
 
 // User login
-app.post("/api/users/login", async (req, res) => {
+app.post(`${import.meta.env.VITE_BASE_URL}/api/users/login`, async (req, res) => {
   // Authentication logic
 });
 
 // Driver registration
-app.post("/api/drivers/register", async (req, res) => {
+app.post(`${import.meta.env.VITE_BASE_URL}/api/drivers/register`, async (req, res) => {
   // Driver registration logic
 });
 ```
@@ -372,17 +372,17 @@ app.post("/api/drivers/register", async (req, res) => {
 
 ```typescript
 // Create booking
-app.post("/api/bookings", async (req, res) => {
+app.post(`${import.meta.env.VITE_BASE_URL}/api/bookings`, async (req, res) => {
   // Booking creation logic
 });
 
 // Get user bookings
-app.get("/api/users/:userId/bookings", async (req, res) => {
+app.get(`${import.meta.env.VITE_BASE_URL}/api/users/:userId/bookings`, async (req, res) => {
   // Fetch user bookings
 });
 
 // Get driver bookings
-app.get("/api/drivers/:driverId/bookings", async (req, res) => {
+app.get(`${import.meta.env.VITE_BASE_URL}/api/drivers/:driverId/bookings`, async (req, res) => {
   // Fetch driver bookings
 });
 ```

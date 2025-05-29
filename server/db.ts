@@ -2,6 +2,8 @@
 import pg from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import * as schema from '../shared/schema';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 const { Pool } = pg;
 
@@ -9,13 +11,13 @@ if (!process.env.DATABASE_URL) {
   console.error('DATABASE_URL environment variable is not set');
   process.exit(1);
 }
-
 // Create PostgreSQL pool with proper SSL config
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: process.env.NODE_ENV === 'production' 
-    ? { rejectUnauthorized: false }
-    : false,
+  connectionString: "postgresql://postgres:Iamnotgivingup2day!@localhost/neondb",//process.env.DATABASE_URL,
+  // ssl: process.env.NODE_ENV === 'production' 
+  //   ? { rejectUnauthorized: false }
+  //   : false,
+  ssl:false,
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 5000,

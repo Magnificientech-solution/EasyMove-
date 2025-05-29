@@ -31,6 +31,9 @@ import {
   loadPaypalDefault,
   getClientToken,
 } from "./paypal";
+import * as dotenv from 'dotenv'
+dotenv.config();
+
 
 // Global cache for PayPal token
 let cachedPayPalToken: string | null = null;
@@ -366,6 +369,8 @@ import express from "express";
 import { calculateDistance } from "./services/distance-calculator";
 import { updatedCalculateDistance } from "./services/updated-enhanced-distance-calculator";
 import { QuoteCalculationService } from "./services/quote-calculation";
+import { Console } from "console";
+
 const router = express.Router();
 
 router.post("/api/calculate-quote", async (req, res) => {
@@ -419,7 +424,6 @@ router.post("/api/create-payment", async (req, res) => {
 
 export async function registerRoutes(app: Express): Promise<Server> {
   app.use(router);
-  // Health check route for deployment monitoring
   app.get("/api/health", (req, res) => {
     const healthCheck = {
       uptime: process.uptime(),
@@ -499,6 +503,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // );
       // console.log("bbbbbbbbbbbbbbbbbbbbbbbbb", distanceResponse);
       // import { updatedCalculateDistance } from "./services/updated-enhanced-distance-calculator";
+
+
       const { updatedCalculateDistance } = await import(
         "./services/updated-enhanced-distance-calculator"
       );

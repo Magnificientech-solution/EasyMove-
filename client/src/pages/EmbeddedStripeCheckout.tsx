@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useQuote } from "@/contexts/QuoteContext";
+import { useQuote } from "../contexts/QuoteContext";
 import { useLocation } from "wouter";
 import { useToast } from "../hooks/use-toast";
 import { Button } from "../components/ui/button";
@@ -15,9 +15,10 @@ import {
   LoadStripe,
   StripeElementsProvider,
   CardElement,
-} from "@/components/payment/StripeElements";
+} from "../components/payment/StripeElements";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL
 // Main checkout component that handles the embedded Stripe payment form
 export default function EmbeddedStripeCheckout() {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,8 +30,10 @@ export default function EmbeddedStripeCheckout() {
   const [customerEmail, setCustomerEmail] = useState("");
   const [customerName, setCustomerName] = useState("");
   const [quotePrice, setQuotePrice] = useState(0);
+
   const stripe = useStripe();
   const elements = useElements();
+  // const quote = location.state?.quote;
   // const stripe = null;
   // const elements = null;
   // Helper function to format price
@@ -151,7 +154,7 @@ export default function EmbeddedStripeCheckout() {
         description: "Preparing the payment form...",
       });
 
-      const response = await fetch("/api/create-payment-intent", {
+      const response = await fetch(`${BASE_URL}/api/create-payment-intent`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(paymentData),
@@ -220,6 +223,11 @@ export default function EmbeddedStripeCheckout() {
     }
 
     setIsPaying(true);
+    
+    if(!stripe)
+      {
+        return null
+      }
 
     try {
       console.log("Starting payment confirmation with Stripe...");

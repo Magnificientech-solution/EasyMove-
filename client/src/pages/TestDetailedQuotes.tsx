@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Loader2 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '../hooks/use-toast';
 
 // Test data for different scenarios
 const testCases = [
@@ -118,7 +118,7 @@ export default function TestDetailedQuotes() {
       console.log(`Running test: ${testCase.name}`);
       
       // Make the API request
-      const response = await fetch('/api/quotes/calculate', {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/quotes/calculate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

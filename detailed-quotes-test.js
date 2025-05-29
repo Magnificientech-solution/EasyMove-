@@ -102,7 +102,7 @@ async function runDetailedQuoteTests() {
       console.log(`Requesting quote with ${testCase.data.itemDetails.totalItems} items...`);
       
       // Make the API request
-      const response = await fetch('/api/quotes/calculate', {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/quotes/calculate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

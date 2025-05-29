@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../components/ui/button";
 import { Calendar as CalendarIcon, MapPin } from "lucide-react";
 import {
   Form,
@@ -11,31 +11,31 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "../../components/ui/form";
+import { Input } from "../../components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "../../components/ui/select";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+} from "../../components/ui/popover";
+import { Calendar } from "../../components/ui/calendar";
+import { cn } from "../../lib/utils";
 import { format } from "date-fns";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "../../components/ui/card";
 import {
   calculateSimpleQuote,
   type QuoteResult,
-} from "@/lib/utils/quote-calculator";
-import { apiRequest } from "@/lib/queryClient";
+} from "../../lib/utils/quote-calculator";
+import { apiRequest } from "../../lib/queryClient";
 import { type VanSize } from "@shared/pricing-rules";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice } from "../../lib/utils";
 
 const quoteFormSchema = z.object({
   collectionAddress: z
@@ -108,7 +108,7 @@ export default function QuoteForm() {
       // Use new API request format with consistent pricing
       const response = await apiRequest({
         method: "POST",
-        url: "/api/quotes/calculate",
+        url: `${import.meta.env.VITE_BASE_URL}/api/quotes/calculate`,
         data: data,
       });
 

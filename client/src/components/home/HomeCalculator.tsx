@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { format } from "date-fns";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "../../hooks/use-toast";
 import { Autocomplete, LoadScript } from "@react-google-maps/api";
-
+import { Link } from "wouter";
 import {
   Form,
   FormControl,
@@ -13,42 +13,44 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+} from "../../components/ui/form";
+import { Input } from "../../components/ui/input";
+import { Button } from "../../components/ui/button";
+import { Calendar } from "../../components/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "../../components/ui/popover";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
-import { Switch } from "@/components/ui/switch";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
+} from "../../components/ui/select";
+import { Slider } from "../../components/ui/slider";
+import { Switch } from "../../components/ui/switch";
+import { Card, CardContent } from "../../components/ui/card";
+import { Badge } from "../../components/ui/badge";
+import { cn } from "../../lib/utils";
 
 import {
   calculateDetailedQuote,
   QuoteResult,
-} from "@/lib/utils/quote-calculator";
+} from "../../lib/utils/quote-calculator";
 
 import {
   PRICING_CONSTANTS,
   type VanSize,
   type FloorAccess,
   type UrgencyLevel,
-} from "@shared/pricing-rules";
+} from "../../../shared/pricing-rules";
 
 // Import API request helper
-import { apiRequest } from "@/lib/queryClient";
+import { apiRequest } from "../../lib/queryClient";
+
+// const [, setLocation] = useLocation();
 
 // Validation schema for the form
 const formSchema = z.object({
@@ -176,7 +178,7 @@ const HomeCalculator: React.FC = () => {
         // estimatedTime: number;
         {
           method: "POST",
-          url: "/api/quotes/calculate",
+          url: `${import.meta.env.VITE_BASE_URL}/api/quotes/calculate`,
           data: {
             collectionAddress: data.pickupAddress,
             deliveryAddress: data.deliveryAddress,
@@ -960,11 +962,12 @@ const HomeCalculator: React.FC = () => {
                 </div>
               </div>
             )}
-
-            <Button
+            <Link href="/embedded-checkout">Proceed to Checkout</Link>
+            {/* <Button
               type="button"
               className="w-full bg-green-600 hover:bg-green-700 text-white mt-4"
               onClick={() => {
+
                 try {
                   // Make sure we have a valid quote
                   if (!quote || !quote.platformFee) {
@@ -975,15 +978,16 @@ const HomeCalculator: React.FC = () => {
                     });
                     return;
                   }
-
+            
                   // Ensure we have a price
                   if (!quote.totalWithVAT) {
                     quote.totalWithVAT = quote.totalPrice;
                   }
-
+alert("+==========================")
                   // Save the quote to localStorage and go directly to embedded checkout
                   localStorage.setItem("savedQuote", JSON.stringify(quote));
                   window.location.href = "/embedded-checkout";
+                  // setLocation("/embedded-checkout", { state: { quote } });
                 } catch (error) {
                   toast({
                     title: "Error",
@@ -994,7 +998,7 @@ const HomeCalculator: React.FC = () => {
               }}
             >
               Proceed to Checkout
-            </Button>
+            </Button> */}
           </div>
         </CardContent>
       </Card>

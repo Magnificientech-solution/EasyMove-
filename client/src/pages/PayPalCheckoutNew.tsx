@@ -113,7 +113,7 @@ export default function PayPalCheckoutNew() {
             // Create an order on the server
             const response = await apiRequest({
               method: "POST",
-              url: "/api/paypal/order",
+              url: `${import.meta.env.VITE_BASE_URL}/api/paypal/order`,
               data: {
                 intent: "CAPTURE",
                 amount: depositAmount.toString(),
@@ -150,7 +150,7 @@ export default function PayPalCheckoutNew() {
             // Capture the funds from the transaction
             const details = await apiRequest({
               method: "POST",
-              url: `/api/paypal/order/${data.orderID}/capture`,
+              url: `${import.meta.env.VITE_BASE_URL}/api/paypal/order/${data.orderID}/capture`,
               data: {}
             });
             

@@ -112,7 +112,7 @@ export default function StripeCheckout() {
             description: "Just a moment...",
           });
 
-          const response = await fetch("/api/create-stripe-checkout-session", {
+          const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/create-stripe-checkout-session`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(paymentData),
@@ -161,7 +161,7 @@ export default function StripeCheckout() {
         customerEmail: customerEmail || undefined,
       };
 
-      const response = await fetch("/api/create-stripe-checkout-session", {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/create-stripe-checkout-session`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(paymentData),

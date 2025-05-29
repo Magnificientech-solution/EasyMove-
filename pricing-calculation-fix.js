@@ -501,7 +501,7 @@ function isLondonAddressLikely(address) {
  */
 
 // Replace the quote calculation route in server/routes.ts
-app.post("/api/quotes/calculate", async (req, res) => {
+app.post(`${import.meta.env.VITE_BASE_URL}/api/quotes/calculate`, async (req, res) => {
   try {
     // Validate request data
     const validatedData = calculateQuoteSchema.parse(req.body);

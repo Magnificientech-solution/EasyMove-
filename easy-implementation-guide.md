@@ -19,7 +19,7 @@ The simplest and most immediate solution is to replace the embedded payment elem
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Add this endpoint in the routes
-app.post('/api/create-stripe-checkout-session', async (req, res) => {
+app.post(`${import.meta.env.VITE_BASE_URL}/api/create-stripe-checkout-session`, async (req, res) => {
   try {
     const { finalPrice } = req.body;
     
@@ -93,7 +93,7 @@ export default function StripeCheckout() {
         throw new Error('No quote data found. Please go back and create a quote first.');
       }
       
-      const response = await fetch('/api/create-stripe-checkout-session', {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/create-stripe-checkout-session`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

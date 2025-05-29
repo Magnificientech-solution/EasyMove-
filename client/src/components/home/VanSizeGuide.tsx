@@ -1,14 +1,14 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "../../components/ui/button";
 import {
   SmallVanIcon,
   MediumVanIcon,
   LargeVanIcon,
   LutonVanIcon,
-} from "@/assets/van-icons";
-import { useAllVanImages } from "@/hooks/use-generated-images";
-import { Skeleton } from "@/components/ui/skeleton";
+} from "../../assets/van-icons";
+import { useAllVanImages } from "../../hooks/use-generated-images";
+import { Skeleton } from "../../components/ui/skeleton";
 import { useState, useEffect } from "react";
-import type { VanSize as VanSizeType } from "@/lib/types";
+import type { VanSize as VanSizeType } from "../../lib/types";
 
 interface VanSizeProps {
   id: VanSizeType;

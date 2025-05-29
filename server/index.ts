@@ -1,8 +1,12 @@
 import express from 'express';
+import * as dotenv from 'dotenv'
+dotenv.config();
 import cors from 'cors';
 import { registerRoutes } from './routes';
 import { setupDatabase } from './services/db-setup';
 import { setupVite } from './vite';
+// require('dotenv').config();
+
 
 // ========== PayPal Integration Imports ==========
 import { 
@@ -14,9 +18,15 @@ import {
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const allowedOrigin = 'http://192.168.15.120:8080';
 
 // Middleware
-app.use(cors());
+app.use(cors(
+  {
+    origin: allowedOrigin,
+    credentials: true, // 👈 must be true to support cookies or auth headers
+  }
+));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

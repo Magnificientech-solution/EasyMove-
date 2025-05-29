@@ -88,7 +88,7 @@ const StripeConfig = () => {
       // to update the server's environment variables
       await apiRequest({
         method: "POST",
-        url: "/api/config/stripe",
+        url: `${import.meta.env.VITE_BASE_URL}/api/config/stripe`,
         data: {
           publicKey,
           secretKey
@@ -123,7 +123,7 @@ const StripeConfig = () => {
   const hasEnvironmentPublicKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY && 
                                import.meta.env.VITE_STRIPE_PUBLIC_KEY.startsWith('pk_');
   const showKeysSwappedWarning = import.meta.env.VITE_STRIPE_PUBLIC_KEY?.startsWith('sk_') || 
-                              import.meta.env.STRIPE_SECRET_KEY?.startsWith('pk_');
+                              import.meta.env.VITE_STRIPE_SECRET_KEY?.startsWith('pk_');
 
   return (
     <div className="container mx-auto py-16 px-4">

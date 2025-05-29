@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
-import { Button } from '@/components/ui/button';
+import { Button } from '../../components/ui/button';
 import { Loader2, CheckCircle, XCircle } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '../../hooks/use-toast';
 
 interface StripeCheckoutFormProps {
   amount: number;

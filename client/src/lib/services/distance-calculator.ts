@@ -27,7 +27,7 @@ export async function calculateDistance(
     const data = await apiRequest<DistanceResponse>({
       method: "POST",
       // url: '/api/quotes/distance',
-      url: "/api/calculate-distance",
+      url: `${import.meta.env.VITE_BASE_URL}/api/calculate-distance`,
       data: { from: fromAddress, to: toAddress },
     });
     console.log("2222222222222222222222222222222222222222222222");

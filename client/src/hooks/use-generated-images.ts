@@ -11,7 +11,7 @@ export function useVanImage(vanSize: VanSize) {
   return useQuery({
     queryKey: ['vanImage', vanSize],
     queryFn: async () => {
-      const response = await fetch(`/api/images/van/${vanSize}`);
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/images/van/${vanSize}`);
       if (!response.ok) {
         console.error('Failed to fetch van image:', response.statusText);
         return { path: '' };
@@ -28,7 +28,7 @@ export function useServiceImage(serviceType: string) {
   return useQuery({
     queryKey: ['serviceImage', serviceType],
     queryFn: async () => {
-      const response = await fetch(`/api/images/service/${serviceType}`);
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/images/service/${serviceType}`);
       if (!response.ok) {
         console.error('Failed to fetch service image:', response.statusText);
         return { path: '' };

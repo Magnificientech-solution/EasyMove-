@@ -7,9 +7,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
+} from "../components/ui/card";
+import { Button } from "../components/ui/button";
+import { useToast } from "../hooks/use-toast";
 import { Loader2, ArrowLeft, CheckCircle, XCircle } from "lucide-react";
 import { SiPaypal } from "react-icons/si";
 import PayPalButton from "../components/payment/PayPalButton";

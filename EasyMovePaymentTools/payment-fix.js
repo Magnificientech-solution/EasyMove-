@@ -399,8 +399,8 @@ function fixPayPalSDKIssues() {
   if (fs.existsSync(routesPath)) {
     const routesContent = fs.readFileSync(routesPath, 'utf8');
     
-    if (!routesContent.includes('/api/paypal/setup') || 
-        !routesContent.includes('/api/paypal/order') ||
+    if (!routesContent.includes(`${import.meta.env.VITE_BASE_URL}/api/paypal/setup`) || 
+        !routesContent.includes(`${import.meta.env.VITE_BASE_URL}/api/paypal/order`) ||
         !routesContent.includes('capture')) {
       console.log('⚠️ PayPal routes might be missing or incorrectly configured');
       console.log('Suggestion: Add the required PayPal endpoints to routes.ts');
@@ -515,7 +515,7 @@ function fixAPIRouteConflicts() {
     
     // Check if we're using /api/ prefix consistently
     const nonApiPrefixed = routes
-      .filter(r => !r.path.startsWith('/api/') && 
+      .filter(r => !r.path.startsWith(`${import.meta.env.VITE_BASE_URL}/api/`) && 
                  (r.path.includes('payment') || r.path.includes('stripe') || r.path.includes('paypal')));
     
     if (nonApiPrefixed.length > 0) {

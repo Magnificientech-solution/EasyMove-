@@ -2,8 +2,8 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "../../components/ui/button";
+import { Checkbox } from "../../components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -11,19 +11,20 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "../../components/ui/form";
+import { Input } from "../../components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { FileInput } from "@/components/ui/file-input";
-import { apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
+} from "../../components/ui/select";
+import { FileInput } from "../../components/ui/file-input";
+import { apiRequest } from "../../lib/queryClient";
+import { useToast } from "../../hooks/use-toast";
 import { IdCard, FileText, Shield, Truck } from "lucide-react";
+import { Link } from "wouter";
 
 const driverFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
@@ -79,7 +80,7 @@ export default function DriverRegistrationForm() {
       formData.append("vehiclePhoto", data.vehiclePhoto);
 
       // Submit form data to API
-      await fetch('/api/drivers/register', {
+      await fetch(`${import.meta.env.VITE_BASE_URL}/api/drivers/register`, {
         method: 'POST',
         body: formData,
         credentials: 'include'
@@ -321,7 +322,7 @@ export default function DriverRegistrationForm() {
                   </FormControl>
                   <div className="space-y-1 leading-none">
                     <FormLabel className="text-sm text-gray-600">
-                      I agree to the <a href="/terms-and-conditions" className="text-primary hover:underline">Terms and Conditions</a> and understand that EasyMove will verify my documents before approval.
+                      I agree to the <Link href="/terms-and-conditions" className="text-primary hover:underline"> <span>Terms and Conditions</span></Link> and understand that EasyMove will verify my documents before approval.
                     </FormLabel>
                     <FormMessage />
                   </div>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useToast } from "@/hooks/use-toast";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Calendar } from "@/components/ui/calendar";
+import { useToast } from "../../hooks/use-toast";
+import { Button } from "../../components/ui/button";
+import { Input } from "../../components/ui/input";
+import { Label } from "../../components/ui/label";
+import { Calendar } from "../../components/ui/calendar";
 import { format } from "date-fns";
 import {
   Card,
@@ -12,14 +12,14 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "../../components/ui/card";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "../../components/ui/popover";
 import { CalendarIcon, Truck, Clock, Loader2 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 import DetailedItemsForm, { Item } from './DetailedItemsForm';
 import { 
   Select, 
@@ -27,7 +27,7 @@ import {
   SelectItem, 
   SelectTrigger, 
   SelectValue 
-} from "@/components/ui/select";
+} from "../../components/ui/select";
 
 export interface QuoteFormValues {
   pickupAddress: string;

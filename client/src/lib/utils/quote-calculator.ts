@@ -12,7 +12,7 @@ import {
   type VanSize,
   type FloorAccess,
   type UrgencyLevel,
-} from "@shared/pricing-rules";
+} from "../../../shared/pricing-rules";
 
 export interface QuoteParams {
   pickupAddress: string;

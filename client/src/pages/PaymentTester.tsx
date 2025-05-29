@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast";
-import PayPalButton from '@/components/payment/PayPalButton';
+import { Button } from "../components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
+import { RadioGroup, RadioGroupItem } from "../components/ui/radio-group";
+import { Label } from "../components/ui/label";
+import { Input } from "../components/ui/input";
+import { useToast } from "../hooks/use-toast";
+import PayPalButton from '../components/payment/PayPalButton';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import StripeCheckoutForm from '@/components/payment/StripeCheckoutForm';
+import StripeCheckoutForm from '../components/payment/StripeCheckoutForm';
 
 // Initialize Stripe with the public key
 // Always make sure we're using a public key (starts with pk_)
@@ -42,7 +42,7 @@ export default function PaymentTester() {
     setProcessing(true);
     try {
       // Create payment intent on the server
-      const response = await fetch('/api/create-payment-intent', {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/create-payment-intent`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

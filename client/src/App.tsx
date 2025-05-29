@@ -1,31 +1,31 @@
 import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/not-found";
-import Home from "@/pages/Home";
-import DriverRegistration from "@/pages/DriverRegistration";
-import TermsAndConditions from "@/pages/TermsAndConditions";
+import  Toaster  from "./components/ui/toaster";
+import { TooltipProvider } from "./components/ui/tooltip";
+import NotFound from "./pages/NotFound";
+import Home from "./pages/Home";
+import DriverRegistration from "./pages/DriverRegistration";
+import TermsAndConditions from "./pages/TermsAndConditions";
 // Removed Calculator page (Price Quote page) to avoid confusion
-import Checkout from "@/pages/Checkout";
-import PayPalCheckout from "@/pages/PayPalCheckout";
-import StripeCheckout from "@/pages/StripeCheckout";
-import EmbeddedStripeCheckout from "@/pages/EmbeddedStripeCheckout";
-import PaymentTester from "@/pages/PaymentTester";
-import DetailedQuote from "@/pages/DetailedQuote";
-import TestDetailedQuotes from "@/pages/TestDetailedQuotes";
-import BookingTracker from "@/pages/BookingTracker";
+import Checkout from "./pages/Checkout";
+import PayPalCheckout from "./pages/PayPalCheckout";
+import StripeCheckout from "./pages/StripeCheckout";
+import EmbeddedStripeCheckout from "./pages/EmbeddedStripeCheckout";
+import PaymentTester from "./pages/PaymentTester";
+import DetailedQuote from "./pages/DetailedQuote";
+import TestDetailedQuotes from "./pages/TestDetailedQuotes";
+import BookingTracker from "./pages/BookingTracker";
 
-import BookingConfirmation from "@/pages/BookingConfirmation";
-import StripeConfig from "@/pages/StripeConfig";
-import DistanceCalculator from "@/pages/DistanceCalculator";
-import CalculatorPage from "@/pages/Calculator";
+import BookingConfirmation from "./pages/BookingConfirmation";
+import StripeConfig from "./pages/StripeConfig";
+import DistanceCalculator from "./pages/DistanceCalculator";
+import CalculatorPage from "./pages/Calculator";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import { useState } from "react";
 import MobileMenu from "./components/layout/MobileMenu";
-import { QuoteProvider } from "@/contexts/QuoteContext";
+import { QuoteProvider } from "./contexts/QuoteContext";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 
@@ -61,7 +61,8 @@ function App() {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-  
+  // console.log("process.env++++++++++++++",process.env)
+console.log(" import.meta.env++++++++++++++", import.meta.env)
   return (
     <QueryClientProvider client={queryClient}>
       <QuoteProvider>

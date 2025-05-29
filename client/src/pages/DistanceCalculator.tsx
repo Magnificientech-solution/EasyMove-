@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
 import {
   Card,
   CardContent,
@@ -8,21 +8,21 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+} from "../components/ui/card";
+import { Separator } from "../components/ui/separator";
 import {
   calculateDistance,
   formatDistance,
   formatEstimatedTime,
-} from "@/lib/services/distance-calculator";
-import { useQuote } from "@/contexts/QuoteContext";
+} from "../lib/services/distance-calculator";
+import { useQuote } from "../contexts/QuoteContext";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "../components/ui/select";
 import { VanSize } from "@shared/pricing-rules";
 import { GoogleMap, LoadScript, Autocomplete } from "@react-google-maps/api";
 

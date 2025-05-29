@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
-import DetailedQuoteForm from '@/components/quote/DetailedQuoteForm';
-import { QuoteResult } from '@/lib/utils/quote-calculator';
+import DetailedQuoteForm from '../components/quote/DetailedQuoteForm';
+import { QuoteResult } from '../lib/utils/quote-calculator';
 import { VanSize } from '@shared/pricing-rules';
-import { Button } from '@/components/ui/button';
+import { Button } from '../components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 
 export default function DetailedQuotePage() {

@@ -14,7 +14,8 @@ import {
   FloorAccess, 
   UrgencyLevel 
 } from "../shared/pricing-rules";
-
+import * as dotenv from 'dotenv'
+dotenv.config();
 /**
  * Route for calculating distances between two addresses
  */
@@ -65,7 +66,7 @@ export function registerDistanceRoutes(app: Express) {
     try {
       // Get quote data from request
       const quoteData = req.body;
-      
+      console.log("000====================");
       // Validate essential fields
       if (!quoteData.collectionAddress || !quoteData.deliveryAddress) {
         return res.status(400).json({ error: 'Missing addresses' });

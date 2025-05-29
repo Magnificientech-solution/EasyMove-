@@ -14,7 +14,7 @@ export default function KlarnaButton({ amount, currency }: KlarnaButtonProps) {
       setIsLoading(true);
       console.log('Initiating Klarna payment for:', { amount, currency });
       
-      const response = await fetch('/api/klarna/create-session', {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/klarna/create-session`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 

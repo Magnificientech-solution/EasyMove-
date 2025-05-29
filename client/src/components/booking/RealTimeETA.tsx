@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
+import { Progress } from '../../components/ui/progress';
+import { Button } from '../../components/ui/button';
+import { Badge } from '../../components/ui/badge';
 import { MapPin, Clock, Truck, Navigation, AlertCircle, CheckCircle, Share2 } from 'lucide-react';
 
 interface RealTimeETAProps {
