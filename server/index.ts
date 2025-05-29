@@ -4,7 +4,6 @@ dotenv.config();
 import cors from 'cors';
 import { registerRoutes } from './routes';
 import { setupDatabase } from './services/db-setup';
-import { setupVite } from './vite';
 // require('dotenv').config();
 
 
@@ -91,6 +90,7 @@ setupDatabase().catch(console.error);
 registerRoutes(app).then(async server => {
   // Setup Vite for development
   if (process.env.NODE_ENV === 'development') {
+    const { setupVite } = await import('./vite');
     await setupVite(app, server);
   }
   
