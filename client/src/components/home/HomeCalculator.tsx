@@ -963,7 +963,7 @@ const HomeCalculator: React.FC = () => {
                 </div>
               </div>
             )}
-            {/* <Link href="/embedded-checkout" >Proceed to Checkout</Link> */}
+            <Link href="/embedded-checkout" >Proceed to Checkout</Link>
             <Button
               type="button"
               className="w-full bg-green-600 hover:bg-green-700 text-white mt-4"
@@ -988,6 +988,7 @@ const HomeCalculator: React.FC = () => {
                   localStorage.setItem("savedQuote", JSON.stringify(quote));
                   // window.location.href = "/embedded-checkout";
                   setLocation("/embedded-checkout"); // navigation via wouter
+
                 } catch (error) {
                   toast({
                     title: "Error",
