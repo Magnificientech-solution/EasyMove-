@@ -13,7 +13,7 @@ import {
   VanSize, 
   FloorAccess, 
   UrgencyLevel 
-} from "../shared/pricing-rules";
+} from "./shared/pricing-rules";
 import * as dotenv from 'dotenv'
 dotenv.config();
 /**

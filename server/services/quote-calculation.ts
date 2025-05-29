@@ -1,6 +1,6 @@
 
 import { calculateDistance } from './fixed-distance-calculator';
-import { type VanSize, type FloorAccess } from '../../shared/schema';
+import { type VanSize, type FloorAccess } from '../shared/schema';
 
 export class QuoteCalculationService {
   static async calculatePrice(params: {

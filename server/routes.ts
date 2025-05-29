@@ -3,7 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import multer from "multer";
 import { z } from "zod";
-import { calculateQuoteSchema, insertDriverSchema } from "@shared/schema";
+import { calculateQuoteSchema, insertDriverSchema } from "server/shared/schema";
 import {
   calculateSimpleQuote,
   buildPriceBreakdown,
@@ -11,7 +11,7 @@ import {
   type FloorAccess,
   type UrgencyLevel,
   PRICING_CONSTANTS,
-} from "../shared/pricing-rules";
+} from "./shared/pricing-rules";
 import { getDynamicPriceRecommendation } from "./services/ai-pricing";
 // Import Google Maps distance calculator for accurate measurements
 import { calculateDistance } from "./services/google-maps-calculator";
@@ -543,7 +543,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
         // Import calculateLoadingTime from pricing-rules
         const { calculateLoadingTime } = await import(
-          "../shared/pricing-rules"
+          "./shared/pricing-rules"
         );
 
         // Calculate loading time based on van size, stairs presence, and item count

@@ -12,7 +12,7 @@ import { Badge } from "../../components/ui/badge";
 import { Separator } from "../../components/ui/separator";
 import { Progress } from "../../components/ui/progress";
 import { QuoteResult } from '../../lib/utils/quote-calculator';
-import { type VanSize, type FloorAccess, type UrgencyLevel, PRICING_CONSTANTS } from '@shared/pricing-rules';
+import { type VanSize, type FloorAccess, type UrgencyLevel, PRICING_CONSTANTS } from '../../../../server/shared/pricing-rules';
 
 // Wizard steps
 enum WizardStep {

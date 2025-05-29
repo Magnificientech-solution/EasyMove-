@@ -34,7 +34,7 @@ import {
   type QuoteResult,
 } from "../../lib/utils/quote-calculator";
 import { apiRequest } from "../../lib/queryClient";
-import { type VanSize } from "@shared/pricing-rules";
+import { type VanSize } from "../../../../server/shared/pricing-rules";
 import { formatPrice } from "../../lib/utils";
 
 const quoteFormSchema = z.object({

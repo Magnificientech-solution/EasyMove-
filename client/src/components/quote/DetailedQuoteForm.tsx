@@ -5,7 +5,7 @@ import { Button } from '../../components/ui/button';
 import { useToast } from '../../hooks/use-toast';
 import { apiRequest } from '../../lib/queryClient';
 import { calculateDetailedQuote, type QuoteResult } from '../../lib/utils/quote-calculator';
-import { VanSize, FloorAccess, UrgencyLevel } from '@shared/pricing-rules';
+import { VanSize, FloorAccess, UrgencyLevel } from '../../../../server/shared/pricing-rules';
 import { formatPrice } from '../../lib/utils';
 
 interface DetailedQuoteFormProps {

@@ -23,7 +23,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../components/ui/select";
-import { VanSize } from "@shared/pricing-rules";
+import { VanSize } from "../../../server/shared/pricing-rules";
 import { GoogleMap, LoadScript, Autocomplete } from "@react-google-maps/api";
 
 // Add this constant for Google Maps API configuration
