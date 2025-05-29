@@ -16,8 +16,7 @@ import {
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const allowedOrigin = 'http://192.168.15.120:8080';
-
+const allowedOrigin = process.env.BASE_URL;
 // Middleware
 app.use(cors(
   {
