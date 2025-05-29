@@ -16,6 +16,7 @@ import {
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+console.log("port and allowed origin ----", process.env.BASE_URL, process.env.PORT );
 const allowedOrigin = process.env.BASE_URL;
 // Middleware
 app.use(cors(

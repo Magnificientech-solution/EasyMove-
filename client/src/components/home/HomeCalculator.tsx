@@ -962,8 +962,8 @@ const HomeCalculator: React.FC = () => {
                 </div>
               </div>
             )}
-            <Link href="/embedded-checkout">Proceed to Checkout</Link>
-            {/* <Button
+            {/* <Link href="/embedded-checkout">Proceed to Checkout</Link> */}
+            <Button
               type="button"
               className="w-full bg-green-600 hover:bg-green-700 text-white mt-4"
               onClick={() => {
@@ -983,7 +983,6 @@ const HomeCalculator: React.FC = () => {
                   if (!quote.totalWithVAT) {
                     quote.totalWithVAT = quote.totalPrice;
                   }
-alert("+==========================")
                   // Save the quote to localStorage and go directly to embedded checkout
                   localStorage.setItem("savedQuote", JSON.stringify(quote));
                   window.location.href = "/embedded-checkout";
@@ -998,7 +997,7 @@ alert("+==========================")
               }}
             >
               Proceed to Checkout
-            </Button> */}
+            </Button>
           </div>
         </CardContent>
       </Card>
