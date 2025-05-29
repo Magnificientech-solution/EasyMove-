@@ -4,7 +4,7 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development tsx index.ts",
+    "dev": "cross-env NODE_ENV=development tsx ../tsconfig.json index.ts",
     "build": "rimraf dist && esbuild index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "start": "cross-env NODE_ENV=production tsx ../tsconfig.json index.ts",
     "check": "tsc",

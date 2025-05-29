@@ -86,18 +86,22 @@ getClientToken().then(() => {
 setupDatabase().catch(console.error);
 
 // Register all routes
-const server = registerRoutes(app).then(async server => {
+registerRoutes(app).then(async server => {
   // Setup Vite for development
   if (process.env.NODE_ENV === 'development') {
     const { setupVite } = await import('./vite');
     await setupVite(app, server);
   }
+  // server.listen(PORT, '0.0.0.0', () => {
+  //   console.log(`Server running on port ${PORT}`);
+  // });
+  
 }).catch(err => {
   console.error('Failed to start server:', err);
   process.exit(1);
 });
 
-server.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });
 
