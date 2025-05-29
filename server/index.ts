@@ -4,7 +4,6 @@ dotenv.config();
 import cors from 'cors';
 import { registerRoutes } from './routes';
 import { setupDatabase } from './services/db-setup';
-// require('dotenv').config();
 
 
 // ========== PayPal Integration Imports ==========
@@ -87,19 +86,19 @@ getClientToken().then(() => {
 setupDatabase().catch(console.error);
 
 // Register all routes
-registerRoutes(app).then(async server => {
+const server = registerRoutes(app).then(async server => {
   // Setup Vite for development
   if (process.env.NODE_ENV === 'development') {
     const { setupVite } = await import('./vite');
     await setupVite(app, server);
   }
-  
-  server.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on port ${PORT}`);
-  });
 }).catch(err => {
   console.error('Failed to start server:', err);
   process.exit(1);
+});
+
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
 // Error handling middleware
