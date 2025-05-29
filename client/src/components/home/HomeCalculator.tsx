@@ -5,7 +5,7 @@ import * as z from "zod";
 import { format } from "date-fns";
 import { useToast } from "../../hooks/use-toast";
 import { Autocomplete, LoadScript } from "@react-google-maps/api";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import {
   Form,
   FormControl,
@@ -83,6 +83,7 @@ const formSchema = z.object({
     .enum(["standard", "priority", "express"] as const)
     .default("standard"),
 });
+const [, setLocation] = useLocation();
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -962,7 +963,7 @@ const HomeCalculator: React.FC = () => {
                 </div>
               </div>
             )}
-            {/* <Link href="/embedded-checkout">Proceed to Checkout</Link> */}
+            {/* <Link href="/embedded-checkout" >Proceed to Checkout</Link> */}
             <Button
               type="button"
               className="w-full bg-green-600 hover:bg-green-700 text-white mt-4"
@@ -985,8 +986,8 @@ const HomeCalculator: React.FC = () => {
                   }
                   // Save the quote to localStorage and go directly to embedded checkout
                   localStorage.setItem("savedQuote", JSON.stringify(quote));
-                  window.location.href = "/embedded-checkout";
-                  // setLocation("/embedded-checkout", { state: { quote } });
+                  // window.location.href = "/embedded-checkout";
+                  setLocation("/embedded-checkout"); // navigation via wouter
                 } catch (error) {
                   toast({
                     title: "Error",
