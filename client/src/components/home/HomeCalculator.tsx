@@ -83,7 +83,6 @@ const formSchema = z.object({
     .enum(["standard", "priority", "express"] as const)
     .default("standard"),
 });
-const [, setLocation] = useLocation();
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -97,6 +96,33 @@ const HomeCalculator: React.FC = () => {
   const [initialView, setInitialView] = useState<boolean>(true);
   const [isScriptLoaded, setIsScriptLoaded] = useState<boolean>(false);
   const { toast } = useToast();
+  const [, setLocation] = useLocation();
+
+  const handleCheckOut = () => {
+    try {
+      if (!quote || !quote.platformFee) {
+        toast({
+          title: "Invalid Quote",
+          description: "Please complete the quote form first",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      if (!quote.totalWithVAT) {
+        quote.totalWithVAT = quote.totalPrice;
+      }
+
+      localStorage.setItem("savedQuote", JSON.stringify(quote));
+      setLocation("/embedded-checkout");
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Could not save your quote. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
 
   // Refs for Autocomplete instances
   const pickupAutocompleteRef = useRef<google.maps.places.Autocomplete | null>(
@@ -963,40 +989,11 @@ const HomeCalculator: React.FC = () => {
                 </div>
               </div>
             )}
-            <Link href="/embedded-checkout" >Proceed to Checkout</Link>
+            {/* <Link href="/embedded-checkout" >Proceed to Checkout</Link> */}
             <Button
               type="button"
               className="w-full bg-green-600 hover:bg-green-700 text-white mt-4"
-              onClick={() => {
-
-                try {
-                  // Make sure we have a valid quote
-                  if (!quote || !quote.platformFee) {
-                    toast({
-                      title: "Invalid Quote",
-                      description: "Please complete the quote form first",
-                      variant: "destructive",
-                    });
-                    return;
-                  }
-            
-                  // Ensure we have a price
-                  if (!quote.totalWithVAT) {
-                    quote.totalWithVAT = quote.totalPrice;
-                  }
-                  // Save the quote to localStorage and go directly to embedded checkout
-                  localStorage.setItem("savedQuote", JSON.stringify(quote));
-                  // window.location.href = "/embedded-checkout";
-                  setLocation("/embedded-checkout"); // navigation via wouter
-
-                } catch (error) {
-                  toast({
-                    title: "Error",
-                    description: "Could not save your quote. Please try again.",
-                    variant: "destructive",
-                  });
-                }
-              }}
+              onClick={handleCheckOut}
             >
               Proceed to Checkout
             </Button>
