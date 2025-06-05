@@ -21,9 +21,6 @@ import BookingConfirmation from "./pages/BookingConfirmation";
 import StripeConfig from "./pages/StripeConfig";
 import DistanceCalculator from "./pages/DistanceCalculator";
 import CalculatorPage from "./pages/Calculator";
-import AdminLogin from "./pages/admin/AdminLogin";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import AdminBookings from "./pages/admin/AdminBookings";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import { useState } from "react";
@@ -51,9 +48,6 @@ function Router() {
       <Route path="/quote" component={DetailedQuote} />
       <Route path="/test-detailed-quotes" component={TestDetailedQuotes} />
       <Route path="/booking-tracker" component={BookingTracker} />
-      <Route path="/admin/login" component={AdminLogin} />
-      <Route path="/admin/dashboard" component={AdminDashboard} />
-      <Route path="/admin/bookings" component={AdminBookings} />
       <Route component={NotFound} />
     </Switch>
   );
