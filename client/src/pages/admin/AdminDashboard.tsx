@@ -1,26 +1,22 @@
-import { useState, useEffect } from 'react';
-import { useLocation } from 'wouter';
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
-import { Button } from "../../components/ui/button";
-import { Badge } from "../../components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs";
-import { 
-  Users, 
-  Truck, 
-  DollarSign, 
-  TrendingUp, 
-  Calendar, 
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  MapPin,
-  Phone,
-  Mail,
-  Star,
+import {
   BarChart3,
+  Calendar,
+  CheckCircle,
+  DollarSign,
+  LogOut,
+  MapPin,
   Settings,
-  LogOut
+  Star,
+  TrendingUp,
+  Truck,
+  Users
 } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'wouter';
+import { Badge } from '../../components/ui/badge';
+import { Button } from '../../components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
 
 export default function AdminDashboard() {
   const [, setLocation] = useLocation();
@@ -29,12 +25,12 @@ export default function AdminDashboard() {
   useEffect(() => {
     const isAuthenticated = localStorage.getItem('adminAuth');
     const email = localStorage.getItem('adminEmail');
-
+    
     if (!isAuthenticated) {
       setLocation('/admin/login');
       return;
     }
-
+    
     if (email) {
       setAdminEmail(email);
     }

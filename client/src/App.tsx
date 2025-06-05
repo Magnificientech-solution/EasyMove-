@@ -1,36 +1,36 @@
-import { Switch, Route } from "wouter";
-import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
-import  Toaster  from "./components/ui/toaster";
+import { Route, Switch } from "wouter";
+import Toaster from "./components/ui/toaster";
 import { TooltipProvider } from "./components/ui/tooltip";
-import NotFound from "./pages/NotFound";
-import Home from "./pages/Home";
+import { queryClient } from "./lib/queryClient";
 import DriverRegistration from "./pages/DriverRegistration";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 import TermsAndConditions from "./pages/TermsAndConditions";
 // Removed Calculator page (Price Quote page) to avoid confusion
-import Checkout from "./pages/Checkout";
-import PayPalCheckout from "./pages/PayPalCheckout";
-import StripeCheckout from "./pages/StripeCheckout";
-import EmbeddedStripeCheckout from "./pages/EmbeddedStripeCheckout";
-import PaymentTester from "./pages/PaymentTester";
-import DetailedQuote from "./pages/DetailedQuote";
-import TestDetailedQuotes from "./pages/TestDetailedQuotes";
 import BookingTracker from "./pages/BookingTracker";
+import Checkout from "./pages/Checkout";
+import DetailedQuote from "./pages/DetailedQuote";
+import EmbeddedStripeCheckout from "./pages/EmbeddedStripeCheckout";
+import PayPalCheckout from "./pages/PayPalCheckout";
+import PaymentTester from "./pages/PaymentTester";
+import StripeCheckout from "./pages/StripeCheckout";
+import TestDetailedQuotes from "./pages/TestDetailedQuotes";
 
-import BookingConfirmation from "./pages/BookingConfirmation";
-import StripeConfig from "./pages/StripeConfig";
-import DistanceCalculator from "./pages/DistanceCalculator";
-import CalculatorPage from "./pages/Calculator";
-import AdminLogin from "./pages/admin/AdminLogin";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import AdminBookings from "./pages/admin/AdminBookings";
-import Header from "./components/layout/Header";
-import Footer from "./components/layout/Footer";
-import { useState } from "react";
-import MobileMenu from "./components/layout/MobileMenu";
-import { QuoteProvider } from "./contexts/QuoteContext";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { useState } from "react";
+import Footer from "./components/layout/Footer";
+import Header from "./components/layout/Header";
+import MobileMenu from "./components/layout/MobileMenu";
+import { QuoteProvider } from "./contexts/QuoteContext";
+import BookingConfirmation from "./pages/BookingConfirmation";
+import CalculatorPage from "./pages/Calculator";
+import DistanceCalculator from "./pages/DistanceCalculator";
+import StripeConfig from "./pages/StripeConfig";
+import AdminBookings from "./pages/admin/AdminBookings";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminLogin from "./pages/admin/AdminLogin";
 
 
 function Router() {

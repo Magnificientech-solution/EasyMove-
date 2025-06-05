@@ -1,7 +1,7 @@
-import { defineConfig } from "vite";
+import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 import react from "@vitejs/plugin-react";
 import path from "path";
-import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
+import { defineConfig } from "vite";
 import ViteRewriteAll from 'vite-plugin-rewrite-all';
 
 // Define plugins array without top-level await
@@ -19,6 +19,16 @@ if (process.env.NODE_ENV !== "production" && process.env.REPL_ID !== undefined) 
 
 export default defineConfig({
   plugins: [react(), ViteRewriteAll()],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://easymove-backend.onrender.com',
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./client/src"),
