@@ -1,11 +1,10 @@
-
 import { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card";
+import { Button } from "../../components/ui/button";
+import { Badge } from "../../components/ui/badge";
+import { Input } from "../../components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../components/ui/select";
 import { 
   ArrowLeft,
   Search,
@@ -95,9 +94,9 @@ export default function AdminBookings() {
       booking.customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       booking.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
       booking.customer.email.toLowerCase().includes(searchTerm.toLowerCase());
-    
+
     const matchesStatus = statusFilter === 'all' || booking.status === statusFilter;
-    
+
     return matchesSearch && matchesStatus;
   });
 
@@ -260,7 +259,7 @@ export default function AdminBookings() {
                         <span>£{booking.pricing.total}</span>
                       </div>
                     </div>
-                    
+
                     <div className="space-y-2">
                       <Select 
                         value={booking.status} 
@@ -276,7 +275,7 @@ export default function AdminBookings() {
                           <SelectItem value="cancelled">Cancelled</SelectItem>
                         </SelectContent>
                       </Select>
-                      
+
                       <Button variant="outline" size="sm" className="w-full">
                         View Details
                       </Button>
